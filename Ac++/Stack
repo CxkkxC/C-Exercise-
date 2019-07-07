@@ -1,0 +1,9 @@
+#include<iostream>
+#include"SqStack.h"
+using namespace std;
+int main()
+{
+	SqStack st;
+	ElemType e;
+	
+	}

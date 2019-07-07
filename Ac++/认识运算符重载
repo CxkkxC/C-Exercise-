@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+class com {
+private:
+  int real;
+  int img;
+public:
+    com(int real = 0, int img = 0)
+     // 构造函数
+  {
+    this->real = real;
+    this->img = img;
+  } 
+  com operator +(com x) {
+    return com(this->real + x.real, this->img + x.img); //将+运算符重载，输入参数为com类，将两个类相加，得到新类。
+  }
+  com operator +(int x) {
+    return com(this->real + x, this->img);
+    // 将+运算符重载，输入参数为int
+    // 型，实现参数与该类的real相加。
+  }
+  friend com operator +(int x, com y);
+  //声明友元函数
+  void show() {
+    cout << real << "," << img << endl;
+  }
+};
+//类外函数实现，没有返回值，不需要声明类名com::
+com operator +(int x, com y) {
+  return com(x + y.real, y.img);
+}
+int main() {
+  com a, b(1, 2), c(2, 3);
+  a = b + c;
+  a.show();
+
+  a = b + 3;
+  a.show();
+
+  a = 3 + c;
+  a.show();
+  
+  return 0;
+}

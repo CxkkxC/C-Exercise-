@@ -1,0 +1,33 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class Student
+{
+	public:
+	void display();
+	/*函数声明*/
+	public:
+	int num;
+	string name;
+	char sex;
+	};
+	/*类外函数实现*/
+	void Student :: display()
+	{
+		cout<<"num:"<<num<<endl;
+		
+		cout<<"name:"<<name<<endl;
+		
+		cout<<"sex:"<<sex<<endl;
+		}
+int main()
+{
+	Student stu1;
+	stu1.num = 25;
+	stu1.name = "Cxk";
+	stu1.sex = 'M';
+	stu1.display();
+	return 0;
+	}
+	
+	

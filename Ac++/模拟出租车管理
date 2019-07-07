@@ -1,0 +1,69 @@
+#include<iostream>
+using namespace std;
+#include<stdlib.h>
+//插入随机数生成函数rand的声明头文件
+int GetARand(int a,int b)
+{
+	return (rand()%(b-a+1)+a);//外部函数，在某个特定区间【a，b】内生成随机数
+}
+void  AddTotal(int f);
+
+class  Taxi
+{
+private:
+const int price;
+//单价，修改，声明price时加const关键字，常数据成员
+	int fare;//总额
+public:
+//修改后不能赋值，该函数删除
+//	void SetPrice(int p){price = p;}
+	int GetPrice(){return price;}
+	void SetFare(int f){fare = f;}
+	int GetFare(){return fare;}
+	void AddFare(int f){fare += f;}//累加收费总额
+	void Order()//执行一个打车订单
+	{
+		int x = GetARand(5,100);
+		AddFare(x * price);
+		AddTotal(x * price);
+	}
+	Taxi (int p = 0,int f = 0):price(p)
+	//修改后应在初始化列表中初始化数据成员
+	{/*price = p;*/ fare = f;}
+};
+int totalFare = 0;//公司总的收费总额
+void AddTotal(int f)
+{
+	totalFare += f;
+}
+
+int main()
+{
+	int i,x;
+	//修改后定义Taxi类对象数组时必须初始化，重点是给出里程单价的初始值
+	Taxi tObj[10] = {Taxi(GetARand(2,5),0),Taxi(GetARand(2,5),0),Taxi(GetARand(2,5),0),Taxi(GetARand(2,5),0),Taxi(GetARand(2,5),0),Taxi(GetARand(2,5),0),Taxi(GetARand(2,5),0),Taxi(GetARand(2,5),0),Taxi(GetARand(2,5),0),Taxi(GetARand(2,5),0)};
+	
+/*	for (i=0;i<10;i++)
+	{
+		x = GetARand(2,5);
+		tObj[i].SetPrice(x);
+		tObj[i].SetFare(0);
+	}*/
+	for (i=0;i<100;i++)
+	{
+		x = GetARand(0,9);
+		tObj[i].Order();
+		
+	}
+	
+	for (i=0;i<10;i++)
+	{
+		cout<<tObj[i].GetPrice()<<","<<tObj[i].GetFare()<<endl;
+		
+	}
+	cout<<totalFare<<endl;
+	
+	
+	return 0;
+	
+}

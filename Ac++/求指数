@@ -1,0 +1,15 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main() {
+  static int n, i, m, a;
+  cin >> n >> m;
+  for (i = 1; i <= m; i++) 
+  {
+    a = pow(n, i);
+    cout<<"            "<<a;
+    if(i%5==0)
+		cout<<endl;
+  }
+  return 0;
+}

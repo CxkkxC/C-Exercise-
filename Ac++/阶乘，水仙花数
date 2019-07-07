@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int N;
+	cin>>N;
+	int n=1,pro=1;
+	while(n<=N)
+	{
+		pro=pro*n;
+		n++;
+		}
+	cout<<pro<<endl;
+	//---------------------------------
+	 n=1,pro=1;
+	 do 
+	 {
+	 pro=pro*n;
+	 n++;
+	 }
+	 while(n<=N);
+	 cout<<pro<<endl;
+	 //一一一一一一一
+	 n=1,pro=1;
+	 for(n=1;n<=N;n++)
+	 {
+	 	pro=pro*n;
+	 	}
+	 	cout<<pro<<endl;
+	 	
+		int a,b,c,d;
+	 	while(d<1000)
+	 	{
+	 	a=d/100;
+	 	b=d%100/10;
+	 	c=d%100%10;
+	 		if(a*a*a+b*b*b+c*c*c==d)
+	 		
+	 	{	cout<<d<<endl;
+	 	}
+	 		d++;}
+	 		
+	return 0;
+	}

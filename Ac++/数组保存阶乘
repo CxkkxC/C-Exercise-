@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+#define M 3000
+int a[M];                 
+int main() {
+  int n;
+  cin >> n;
+  int c = 0;                   
+  int s;
+  a[0] = 1;
+  int i, j;
+  for (i = 2; i <= n; i++) {
+    for (j = 0; j < M; j++) {
+      s = a[j] * i + c;
+      a[j] = s % 10;
+      c = s / 10;
+    }
+  }
+for (i = M - 1; i > 0; i--)
+  {
+    if (a[i])
+      break;//前面0去掉
+      }
+      for (int j = 0; j<M-1; j++)
+  {
+    if (a[j])
+      break;//前面0去掉
+      }
+  for (j = i; j >= 0; j--)
+    cout << a[j];
+}

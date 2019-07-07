@@ -1,0 +1,14 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	char *str="good bye";
+	char *p=str;
+	while(*p!='\0')
+	{
+		cout<<*p;
+		p++;
+		}
+	
+	return 0;
+	}

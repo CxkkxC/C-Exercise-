@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+class Student {
+public:
+ char name[20], ID[11];
+  int age;
+  double score;
+  char *memo;
+Student(char *pname,char *pID,int iniage,int iniscore,char *pmemo)
+/*结构函数,初始化各个变量*/
+{
+	strcpy(name,pname);//strcpy复制函数
+		strcpy(ID,pID);
+		age = iniage;
+	   score = iniscore;
+	   int len = strlen(pmemo);//strlen函数，计算长度
+	   if(len<=0)
+	   memo = 0;
+	   else 
+	   {
+	   memo = new char[ len+1 ];
+	   strcpy(memo,pmemo);  	
+	   	}
+	   	cout<<"调用构造函数。"<<endl;
+	}	
+	~Student()
+{
+	if(memo != 0)
+	delete []memo;	
+cout<<"调用析构函数。"<<endl;
+	}
+};
+int main()
+{
+	Student s1("张三","511721010639",19,95,"市三好学生");
+	cout<<s1.name<<s1.ID<<s1.age<<s1.score<<s1.memo<<endl;
+	Student s2(s1);
+	cout<<s2.name<<s2.ID<<s2.age<<s2.score<<s2.memo<<endl;
+	
+	Student s3(s2);
+	cout<<s3.name<<s3.ID<<s3.age<<s3.score<<s3.memo<<endl;
+	
+	return 0;
+	}

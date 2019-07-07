@@ -1,0 +1,12 @@
+#include<stdio.h>
+int main()
+{
+	int a=1314520;
+	int b=19970518;
+	int c;
+	c=a ^ b;
+	printf("男孩说:happy birthday! %d\n",a);
+	printf("男孩说:happy birthday! %d\n",c^b);
+	
+	
+	}

@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+void hanoi(int N,char A,char B,char C)
+{
+	if(N==1)
+cout<<A<<"->"<<C<<endl;
+	else
+	{
+		hanoi(N-1,A,C,B);	cout<<A<<"->"<<C<<endl;			hanoi(N-1,B,A,C);
+		}
+	}
+	int main()
+	{
+		int M;
+		cout<<"请输入盘数："<<endl;
+		cin>>M;
+		cout<<"需要移动的次数："<<endl;
+		hanoi(M,'A','B','C');
+		return 0;
+	}

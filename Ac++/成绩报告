@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+ 
+int main ()
+{
+	int m;
+	cout<<"请问你是显示成绩还是显示成绩等级？"<<endl<<"显示成绩请输入数字“1”，显示成绩等级请输入数字“2”，并按回车键继续。"<<endl;
+	cin>>m;
+	if(m==1)
+	{
+		cout<<"请输入你的成绩等级：(a～d)  "<<endl; 
+		char n;
+   cin>>n;
+ if(n>='a' && n<='z')
+ //小写字母转换为大写字母
+ n-=32;
+ switch(n)
+   {
+   case 'A' :
+      cout << "你的成绩是：90以上" << endl; 
+      break;
+   case 'B' :
+      cout << "你的成绩是：80～90" << endl;
+      break;
+   case 'C' :
+      cout << "你的成绩是：70～80" << endl;
+      break;
+   case 'D' :
+      cout << "你的成绩是：60～70" << endl;
+      break;  
+      }
+      }
+      else if(m==2) 
+      {	cout<<"请输入你的成绩分数：(0～100)"<<endl;
+      double x;
+      cin>>x;
+      if(x>=90 && x<=100)
+      cout<<"你的成绩等级为：A"<<endl;
+      else if(x>=80)
+      cout<<"你的成绩等级为：B"<<endl;
+      else if(x>=70)
+      cout<<"你的成绩等级为：C"<<endl;
+      else if(x>=60)
+      cout<<"你的成绩等级为：D"<<endl;
+      else
+      cout<<"你的成绩等级为：E"<<endl;
+  }
+    return 0;
+}

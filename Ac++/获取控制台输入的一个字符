@@ -1,0 +1,10 @@
+//获取控制台输入的一个字符
+
+#include <iostream>
+using namespace std;
+main ()
+{
+string ch;
+ch=cin.get();               //或者cin.get(ch);
+cout<<ch<<endl;
+}

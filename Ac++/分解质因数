@@ -1,0 +1,21 @@
+#include<math.h>
+#include<iostream>
+using namespace std;
+void prime(int j) {
+  cout << j << "=";
+  for (int i = 2; i <= sqrt(j); i++) {
+    if (j % i == 0) {
+      j /= i;
+      cout << i-- << "*";
+    }
+  }
+  cout << j << endl;
+}
+int main() {
+  int n, m, i;
+  cin >> n >> m;
+  for (i = n; i <= m; i++) {
+    prime(i);
+  }
+  return 0;
+}

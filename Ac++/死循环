@@ -1,0 +1,8 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	while(1)
+	cout<<"\033[1;32;m 1\033[m";
+	cout<<"\033[1;32;m 0\033[m";
+	}

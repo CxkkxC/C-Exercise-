@@ -1,0 +1,60 @@
+#include <iostream> 
+#include <fstream>
+#include <string>
+using namespace std;
+int CountLines(char *filename)//获取文件的行数
+{
+ifstream ReadFile;
+int n=0;
+string temp;
+ReadFile.open(filename,ios::in);//ios::in 表示以只读的方式读取文件
+if(ReadFile.fail())//文件打开失败:返回0
+{
+   return 0;
+}
+else//文件存在,返回文件行数
+{
+   while(getline(ReadFile,temp))
+   {
+    n++;
+   }
+   return n;
+}
+ReadFile.close();
+}
+
+int main() 
+{ 
+ifstream file; 
+int LINES;
+char filename[512];
+cout<<"请输入要打开的文件名:"<<endl;
+cin>>filename;
+file.open(filename,ios::in);
+if(file.fail())
+{
+cout<<"文件不存在."<<endl;
+file.close();
+cin.get();
+cin.get();
+}
+else//文件存在
+{
+LINES=CountLines(filename);
+int *tc=new int[LINES]; 
+char *t=new char[LINES]; 
+int i=0; 
+while(!file.eof()) //读取数据到数组
+{ 
+file>>tc[i]; 
+file>>t[i]; 
+i++; 
+} 
+file.close(); //关闭文件
+for(i=0;i<LINES;i++)//输出数组内容
+cout<<tc[i]<<"\t"<<t[i]<<endl;
+cin.get();
+cin.get();
+}
+return 0;
+}

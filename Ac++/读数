@@ -1,0 +1,70 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main() {
+  string a;
+  string b[10] =
+    { "ling", "yi", "er", "san", "si", "wu", "liu", "qi", "ba", "jiu" };
+  string c[11] =
+    { "", "", "shi", "bai", "qian", "wan", " shi", "bai", "qian", "yi",
+"shi" };
+  cin >> a;
+  int l = a.length(), j;
+  for (int i = 0; i < l; i++) {
+    j = a[i] - '0';
+    /* if(i>=2) cout <<carry[i+1]<<" "<<chinese[j[i]] << " "; else cout <<
+       chinese[j[i]] << " "; } */
+    if (j == 0) {
+      if (i < l - 1)
+        if (a[i + 1] != 48)
+          cout<<b[j]<<" ";
+    } else if ((l - i == 2 || l - i == 6 || l - i == 10) && j == 1)
+      cout<<c[l - i]<<" ";
+    else if (a[i - 1] == 48 && j == 1)
+      cout<<b[j]<<" "<<c[l - i];
+    else
+     cout<<b[j]<<" "<<c[l - i]<<" ";
+  }
+  printf("\n");
+  return 0;
+}
+/*
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	int i,j,len;
+	char s[10];
+	char Num[20][10]={"ling","yi","er","san","si","wu","liu","qi","ba","jiu"};
+	char Char[20][10]={"","","shi","bai","qian","wan","shi","bai","qian","yi","shi"};
+	scanf("%s",s);
+	len=strlen(s);
+	for(i=0;i<len;i++)
+	{
+		j=s[i]-'0'; //转换为整形 
+		if(j==0) //当遇到0时则有两种 
+		{
+			if(i<len-1) //第2项to倒数第2个数字 
+			{
+				if(s[i+1]!='0') //如果下一项不为0  
+				{
+					printf("%s ",Num[j]); //输出当前的0的拼音 
+				}
+			}
+			if(len-i==5) //如果倒数第五项（因为是从第一个数字开始）是0的话，则输出"wan" ， 
+				printf("%s ",Char[len-i]);
+		}
+		//当遇到1时，判断是否是包含shi这个音，即该位置在十亿，十万 这两个位置
+		else if((len-i==10 || len-i==6 )&& j==1) 
+		{
+			printf("%s ",Char[len-i]);
+		}
+		else if((len-i!=10||len-i!=6)&&j==1) //不需要输出shi的1 
+		{
+			printf("%s %s ",Num[j],Char[len-i]);
+		} 
+		else //其他 
+		printf("%s %s ",Num[j],Char[len-i]);
+	}
+	return 0;
+}*/

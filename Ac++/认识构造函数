@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+class Time {
+public:
+  Time(int, int, int);
+  /* 声明带参数的构造函数 */
+  /*构造函数是为了初始化对象的*/
+  void show_time();
+  /* 声明函数 */
+private:
+  int hour;
+  int minute;
+  int second;
+};
+Time::Time(int h, int m, int s)
+ /* 定义构造函数 */
+   {
+  hour = h;
+  minute = m;
+  second = s;
+}
+void Time::show_time() 
+/*实现函数*/
+{
+  cout << hour << ":" << minute << ":" << second << endl;
+}
+int main() {
+  Time t1(1, 2, 3);
+  Time t2(4, 5, 6);
+  t1.show_time();
+  t2.show_time();
+  return 0;
+}

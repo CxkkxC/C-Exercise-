@@ -1,0 +1,50 @@
+#include<iostream>
+using namespace std;
+void sum1(int a,int b)
+{
+	int sum=0;
+	sum=a+b;
+	cout<<sum<<'\n';
+	}
+int sum2(int &a,int&b)
+	{
+		a=9,b=2;
+		int sum=0;
+		sum=a+b;
+		return sum;
+		}
+void sum3()
+		{
+			int s,a,b;
+			int *p;
+			s=sum2(a,b);
+			p=&s;
+			cout<<*p<<endl;
+			}
+void sum4(int *p)
+			{
+				for (int k=0;k<=5;k++)
+					cout<<*(p+k)<<" ";
+					cout<<endl;
+					}
+void sum5(int b[][3])
+					{
+						for (int i=0;i<2;i++)
+						{
+							for (int j=0;j<3;j++)
+							cout<<b[i][j];
+							cout<<endl;
+							}
+							}
+int main()
+							{
+								int a[6]={1,2,3,4,5,6};
+								int b[2][3]={1,2,3,4,5,6};
+								int n,m;
+								n=2,m=3;
+							sum1(n,m);
+								sum3();
+								sum4(a);
+								sum5(b);
+								return 0;
+								}

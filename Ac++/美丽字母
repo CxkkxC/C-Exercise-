@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+int main() {
+  int n, m, k;
+  cin >> n >> m;
+  char a[n][m];
+ /* a[0][0] = 65;
+  cout << a[0][0];*/
+  /*下标差0为A,1为B...*/
+  for (int i = 0; i < n; i++)
+    for (int j = 0; j < m; j++) {
+      k = i - j;
+      if (k < 0)
+        k = -k;
+      a[i][j] = 65 + k;
+    }
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < m; j++) {
+      cout << a[i][j];
+    }
+    cout << endl;
+  }
+} 

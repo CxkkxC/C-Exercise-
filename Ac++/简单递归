@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+int fun(int a[],int i)
+{
+	if(i==1) return a[0];
+	else
+	return (fun(a,i-1)+a[i-1]);
+	}
+int main()
+{
+	int a[3]={1,2,3};
+	cout<<fun(a,3);
+	}

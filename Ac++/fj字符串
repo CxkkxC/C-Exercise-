@@ -1,0 +1,17 @@
+ #include<iostream>
+using namespace std;
+void f(int n) {
+  if (n) {
+    f(n - 1);
+    char a = 65 + n - 1;
+    cout << a;
+    f(n - 1);
+  }
+}
+int main() {
+  int N, num;
+  cin >> N;
+  f(N);
+  cout << endl;
+  return 0;
+}

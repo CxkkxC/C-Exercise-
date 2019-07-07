@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+#define M 100
+int a[M], b[M], c[M];
+int main() {
+  int i, k;
+  string e, f;
+  cin >> e;
+  cin >> f;
+  for (i = 0; i < e.length(); i++)
+    a[i] = e[i] - '0';
+  for (i = 0; i < f.length(); i++)
+    b[i] = f[i] - '0';
+  for (i = 0; i < e.length() || i < f.length(); i++) {
+    if (i < e.length())
+      c[i] += a[e.length() - i - 1];
+    if (i < f.length())
+      c[i] += b[f.length() - i - 1];
+    if (c[i] >= 10) {
+      c[i + 1] = c[i] / 10;
+      c[i] %= 10;
+    }
+  }
+  for (i = M - 1; i > 0; i--)
+    if (c[i])
+      break;
+  for (int j = i; j >= 0; j--)
+    cout << c[j];
+} 
+/**********/

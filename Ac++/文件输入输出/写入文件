@@ -1,0 +1,57 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main()
+{
+	/*ifstream -- 从已有的文件读
+ofstream -- 向文件写内容
+fstream - 打开文件供读写
+文件打开模式：
+ 
+ios::in             读
+ios::out            写
+ios::app            从文件末尾开始写
+ios::binary         二进制模式
+ios::nocreate       打开一个文件时，如果文件不存在，不创建文件。
+ios::noreplace      打开一个文件时，如果文件不存在，创建该文件
+ios::trunc          打开一个文件，然后清空内容
+ios::ate            打开一个文件时，将位置移动到文件尾
+ 
+文件指针位置在c++中的用法：
+ 
+ios::beg   文件头
+ios::end   文件尾
+ios::cur   当前位置
+例子：
+file.seekg(0,ios::beg);   //让文件指针定位到文件开头 
+file.seekg(0,ios::end);   //让文件指针定位到文件末尾 
+file.seekg(10,ios::cur);   //让文件指针从当前位置向文件末方向移动10个字节 
+file.seekg(-10,ios::cur);   //让文件指针从当前位置向文件开始方向移动10个字节 
+file.seekg(10,ios::beg);   //让文件指针定位到离文件开头10个字节的位置
+ 
+常用的错误判断方法:
+ 
+good()   如果文件打开成功
+bad()   打开文件时发生错误
+eof()    到达文件尾*/
+    ofstream in;
+in.open("com.txt",ios::trunc); //ios::trunc表示在打开文件前将文件清空,由于是写入,文件不存在则创建
+int i;
+char a='a';
+for(i=1;i<=26;i++)//将26个数字及英文字母写入文件
+{
+   if(i<10)
+   {
+    in<<"0"<<i<<"\t"<<a<<"\n";
+    a++;
+   }
+   else
+   {
+    in<<i<<"\t"<<a<<"\n";
+    a++;
+   }
+   
+   }
+in.close();//关闭文件
+return 0;
+}

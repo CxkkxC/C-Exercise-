@@ -1,0 +1,96 @@
+#include <stdlib.h>  
+#include<iostream>
+#include<time.h>
+using namespace std;
+int main()  
+{ 
+cout<<"游戏开始，祝您好运！\n";
+cout<<"系统已给出一个1～100的随机数字。\n您共有7次机会根据提示猜出这个数字。\n";
+int Sz;
+srand( (unsigned)time(NULL) );
+Sz=rand()%100+1;
+/*cout<<Sz<<endl;*/
+int Cs=0;
+while(1)
+{
+ int Jx,Jf=0; /*系统在调用rand（）之前都会自动调用srand()，如果用户在rand()之前曾调用过srand()给参数seed指定了一个值，那么rand()就会将seed的值作为产生伪随机数的初始值；而如果用户在rand()前没有调用过srand()，那么系统默认将1作为伪随机数的初始值。如果给了一个定值，那么每次rand()产生的随机数序列都是一样的。 所以为了避免上述情况的发生我们通常用srand((time(0)))或者srand((time(NULL)))来 产生种子*/
+/*rand()是随机产生0－32767之间的数，%是取余数,rand()会回传一个乱数，rand()%100乱数会介于0~99之间，再+1会变成1~100之间，所以rand()%100+1 就是一个1~100之间的乱数*/
+int Csz;
+while(cout<<"请输入您要猜的数字:",cin>>Csz)
+{
+if(Csz>Sz+20)
+{
+cout<<"猜太大了！\n";
+Cs++;
+}
+else if(Csz>Sz+15)
+{
+cout<<"猜大了哦，还可以再小点！\n";
+Cs++;
+}
+else if(Csz>Sz+10)
+{
+cout<<"猜大了哦，还可以再小点点！\n";
+Cs++;
+}
+else if(Csz>Sz+5)
+{
+cout<<"猜大了哦，要不再小点点？\n";
+Cs++;
+}
+else if(Csz>Sz)
+{
+cout<<"猜大了哦，应该还可以再小点点！\n";
+Cs++;
+}
+else if(Csz<Sz-20)
+{
+cout<<"猜太小了！\n";
+Cs++;
+}
+else if(Csz<Sz-15)
+{
+cout<<"猜小了哦，还可以再大点！\n";
+Cs++;
+}
+else if(Csz<Sz-10)
+{
+cout<<"猜小了哦，还可以再大点点！\n";
+Cs++;
+}
+else if(Csz<Sz-5)
+{
+cout<<"猜小了哦，要不再大点点？\n";
+Cs++;
+}
+else if(Csz<Sz)
+{
+cout<<"猜小了哦，应该还可以再大点！\n";
+Cs++;
+}
+else if(Csz==Sz)
+{	cout<<"恭喜你，猜对了！\n奖你一个么么哒～(^з^)-☆\n";
+Jf++;
+cout<<"您的积分为："<<Jf<<endl;
+	cout<<"请您继续！\n";
+Cs=0;
+srand( (unsigned)time(NULL) );
+Sz=rand()%100+1;
+}
+	if (Cs==7)
+	{	cout<<"7次机会已用光！\n游戏结束！\n(ಥ_ಥ)\n您的游戏积分为:"<<Jf<<endl;
+	break;
+	}
+}
+cout<<"继续小游戏请输入数字 1 \n否则请输入其它数字退出游戏。\n";
+cin>>Jx;
+Jf=0;Cs=0;
+if(Jx==1)
+{	cout<<"很好，请继续您的猜字游戏！\n";
+continue;
+}
+else
+break;
+}
+   return  0;  
+}  

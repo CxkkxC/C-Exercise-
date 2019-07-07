@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+int sushu(int a )
+{
+		int i;
+		if(a<2)
+		return 1;
+for(i=2;i<=a-1;i++)
+{	
+	if (a%i==0)
+	{
+		return 0;
+	}
+	}
+	return 1;
+	}
+int main()
+{
+int N;
+cin>>N;
+if (sushu(N))
+cout<<"这个数是素数\n";
+else
+cout<<"这个数不是素数\n";
+return 0;
+}

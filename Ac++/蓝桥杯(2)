@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+#define PI 3.14159265358979323
+int main() {
+  int r;
+  double area;
+  cin >> r;
+  area = r * r * PI;
+  cout.precision(7);
+  cout.setf(ios::fixed);
+  cout << area;
+  return 0;
+} 

@@ -1,0 +1,16 @@
+#include<iostream>
+using namespace std;
+int main() {
+  int a, b, c, d = 100;
+  while (d < 999) {
+    a = d / 100;
+    b = d % 100 / 10;
+    c = d % 100 % 10;
+    if (a * a * a + b * b * b + c * c * c == d)
+    {
+      cout << d << endl;
+    }
+    d++;
+  }
+  return 0;
+}

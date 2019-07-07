@@ -1,0 +1,50 @@
+#include<iostream>
+using namespace std;
+void sum1();
+int sum2();
+int sum3(int);
+int sum4(int ,int);
+int main()
+{
+	sum1();
+	cout<<'\n';
+	cout<<sum2()<<endl;
+	cout<<'\n';
+	int N;
+	cin>>N;
+	cout<<sum3(N)<<endl;
+	cout<<'\n';
+	int A,B;
+	cin>>A>>B;
+	cout<<sum4(A,B)<<endl;
+	cout<<'\n';
+	return 0;
+	}
+void sum1()
+{
+	int sum=0;
+	for(int i=0;i<=100;i++)
+	sum+=i;
+	cout<<sum<<endl;
+	}
+int sum2()
+{
+	int sum=0;
+	for(int i=0;i<=100;i++)
+	sum+=i;
+	return sum;
+	}
+int sum3(int a)
+{
+	int sum=0;
+	for(int i=0;i<=a;i++)
+	sum+=i;
+	return sum;
+	}
+int sum4(int a,int b)
+{
+	int sum=0;
+	for(a=0;a<=b;a++)
+	sum+=a;
+	return sum;
+	}

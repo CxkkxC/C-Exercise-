@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+int pri(int a,int b)
+{
+/*	cout<<"*************";
+	cout<<"        Hello      ";
+	cout<<"*************";
+*/
+return a+b;
+
+		}
+
+int sum()
+{
+	int s=0;
+	for (int i=0;i<=100;i++)
+	s+=i;
+	return s;
+	}		
+int main()
+{
+	/*
+	for (int i=0;i<=5;i++)
+{
+		pri();
+	cout<<'\n';
+	}*/
+cout<<pri(3,5)<<"   "<<sum();
+	return 0;
+	}

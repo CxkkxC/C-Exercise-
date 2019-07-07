@@ -1,0 +1,92 @@
+/* 
+ *
+ *
+ 暑假格斗小游戏
+ *
+ 开始时间：18年7月31日
+ *
+ 结束时间：
+ *
+ 作者：Cxk
+ *
+ *
+ */
+#include<stdlib.h>
+#include<iostream>
+#include<time.h>
+using namespace std;
+class Person {
+public:
+  string name;
+  float blood;
+    Person() {
+    name = '0';
+    blood = 0;
+}};
+class Player:public Person {
+public:
+  Player() {
+    name = '0';
+    blood = 100;
+  } string Name() {
+    cout << "请输入玩家昵称：";
+    cin >> name;
+    return name;
+  }
+};
+class Monster:public Person {
+public:
+  Monster() {
+    name = "小怪物";
+    blood = 50;
+}};
+float fight(float a, float b)   // b打a
+{
+  float c;
+  int m;
+  srand(time(0));
+  m = rand() % 10;
+  c = b * 0.05;
+  if (m < 2) {
+    c = c * 2;
+    cout << "打出暴击！双倍伤害！造成的伤害为：" << c << "点"
+      << endl;
+  } else {
+    cout << "造成的伤害为：" << c << "点" << endl;
+  }
+  a = a - c;
+  return a;
+}
+float defense(int a,int b)
+{
+	
+  float c;
+  int m;
+  srand(time(0));
+  m = rand() % 10;
+  c = b * 0.05;
+  if (m < 2) {
+    c = 0;
+    cout << "防御成功，受到的伤害为：" << c << "点"
+      << endl;
+  } else {
+    cout << "防御失败！";
+    a=a-c;
+  }
+  return a;
+}
+int main() {
+  Player p1;
+  // p1.Name();
+  Monster m1;
+  if(m1.blood == defense(m1.blood,p1.blood))
+  {
+  	cout << m1.name << "剩余血量为：" << m1.blood << endl;
+  }
+  else
+  {
+  	m1.blood = fight(m1.blood, p1.blood);
+  cout << m1.name << "剩余血量为：" << m1.blood << endl;
+  }
+  return 0;
+}

@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+class Printing
+{
+	public:
+	int x;
+	int y;
+	void printx()
+	{
+		cout<<x<<endl;
+		}
+		void printy()
+		{
+			cout<<y<<endl;
+			}
+	};
+	int main()
+	{
+		//两种指向类的方法
+		
+		Printing pri;
+		pri.x = 10;
+		pri.y = 20;
+		pri.printx();
+		pri.printy();
+		Printing *p = new Printing();
+		p -> x = 100;
+		p -> y = 200;
+		p -> printx();
+		p -> printy();
+		delete p;
+		p = NULL;
+		return 0;
+		}

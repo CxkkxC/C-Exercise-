@@ -1,0 +1,445 @@
+/* 
+   备注： 数字键盘： 2，4左右移动， 5 变形 8 加速下移 2
+   暂停 1 游戏失败后重新开始 */
+#include <stdio.h>
+#include<conio.h>
+// 行列参数设置
+#define HANG 17
+#define LIE 13
+// 延时时间
+#define TIME 250
+
+int main(void) {
+  int yanshia(int i);
+  int a[HANG + 1][LIE + 1] = { 0 };
+  int b[HANG + 1][LIE + 1] = { 0 };
+  int i, ii, ia, ib, ic;
+  int z = 1;
+  int n = 0;
+  int cn = 0;
+  int aaa;
+  int youy = 0;
+  int openy = 0;
+  int openz = 0, zuoy = 13;
+  int youy1 = 0, zuoy1 = 0;
+  int dd = 0;
+  int hang = 0, hang1 = 0;
+  int se = 1;
+  int bianxing = 0;
+  int bianxing1 = 0;
+  int ia1, ib1, ib2;
+  int defen = 0;
+  int yanshi = 0;
+  int bianxing2 = 0;
+  int bianxing3 = 0;
+  int jishu = 0;
+  int pingyi = 0;
+  for (i = 0; i <= HANG; i++) {
+    for (ii = 0; ii <= LIE; ii++) {
+      a[i][ii] = 0;             // 初始化数组
+      b[i][ii] = 0;             // 初始化数组
+    }
+  }
+  ic = 0;
+
+  // 总体
+  do {
+    // 模拟
+    n++;
+    z = 1;
+    jishu++;
+    if (ic == 0) {
+      a[0][7] = n;
+      a[1][6] = n;
+      a[1][7] = n;
+      a[2][6] = n;
+    }
+    if (ic == 1) {
+      a[0][7] = n;
+      a[1][6] = n;
+      a[1][7] = n;
+      a[1][8] = n;
+      bianxing1 = 0;
+    }
+    if (ic == 2) {
+      a[0][6] = n;
+      a[0][7] = n;
+      a[1][6] = n;
+      a[1][7] = n;
+    }
+    if (ic == 3) {
+      a[0][7] = n;
+      a[1][7] = n;
+      a[1][8] = n;
+      a[2][8] = n;
+    }
+    if (ic == 4) {
+      a[0][7] = n;
+      a[1][7] = n;
+      a[2][7] = n;
+      a[3][7] = n;
+    }
+    // 主体
+    while (z == 1) {
+      if (pingyi < 2) {
+        pingyi += 3;
+      } else {
+        pingyi = 2;
+      }
+      // 左右移动图形
+      for (i = 0; i < 3; i++)   // 读取键盘
+      {
+        if (kbhit())
+          aaa = getch();
+      }
+      // 变形
+      for (ia1 = 0; ia1 <= HANG; ia1++) {
+        for (ib1 = 0; ib1 <= LIE; ib1++) {
+          if (a[ia1][ib1] == n && aaa == 53) {
+            if (ic == 0) {
+              if (bianxing == 0) // 变1
+              {
+                a[ia1][ib1 - 1] = n;
+                a[ia1 + 1][ib1 - 1] = 0;
+                a[ia1 + 2][ib1 - 1] = 0;
+                a[ia1 + 1][ib1 + 1] = n;
+                ib1 = 14;
+                ia1 = 16;
+                bianxing++;
+              } else {
+                if (bianxing > 0) {
+                  a[ia1][ib1] = 0;
+                  a[ia1 + 1][ib1] = n;
+                  a[ia1 + 2][ib1] = n;
+                  a[ia1 + 1][ib1 + 2] = 0;
+                  ib1 = 14;
+                  ia1 = 16;
+                  bianxing = 0;
+                }
+              }
+            } else
+              // 变2
+            if (ic == 1) {
+              if (bianxing1 == 0) {
+                a[ia1 + 2][ib1] = n;
+                a[ia1 + 1][ib1 + 1] = 0;
+                bianxing1++;
+                ib1 = 14;
+                ia1 = 16;
+              } else
+                // 
+              if (bianxing1 == 1) {
+                a[ia1][ib1] = 0;
+                a[ia1 + 1][ib1 + 1] = n;
+                bianxing1++;
+                ib1 = 14;
+                ia1 = 16;
+              } else
+                // 
+              if (bianxing1 == 2) {
+                a[ia1 - 1][ib1 + 1] = n;
+                a[ia1][ib1] = 0;
+                bianxing1++;
+                ib1 = 14;
+                ia1 = 16;
+              } else
+                if(bianxing1 == 3) {
+                a[ia1 + 2][ib1] = 0;
+                a[ia1 + 1][ib1 - 1] = n;
+                bianxing1 = 0;
+                ib1 = 14;
+                ia1 = 16;
+                }
+            } else if (ic == 3) {
+              if (bianxing2 == 0) // 变4
+              {
+                a[ia1][ib1] = 0;
+                a[ia1 + 1][ib1] = 0;
+                a[ia1 + 1][ib1 + 2] = n;
+                a[ia1 + 2][ib1] = n;
+                ib1 = 14;
+                ia1 = 16;
+                bianxing2++;
+              } else {
+                if (bianxing2 == 1) {
+                  a[ia1][ib1 - 1] = n;
+                  a[ia1 - 1][ib1 - 1] = n;
+                  a[ia1][ib1 + 1] = 0;
+                  a[ia1 + 1][ib1 - 1] = 0;
+                  ib1 = 14;
+                  ia1 = 16;
+                  bianxing2 = 0;
+                }
+              }
+            } else if (ic == 4) {
+              if (bianxing3 == 0) // 变5
+              {                 // 变形边界检查
+                if ((ib1 - 1) >= 0 && (ib1 + 2) <= 13) {
+                  a[ia1][ib1 - 1] = n;
+                  a[ia1][ib1 + 1] = n;
+                  a[ia1][ib1 + 2] = n;
+                  a[ia1 + 1][ib1] = 0;
+                  a[ia1 + 2][ib1] = 0;
+                  a[ia1 + 3][ib1] = 0;
+                  ib1 = 14;
+                  ia1 = 16;
+                  bianxing3++;
+                }
+              } else {
+                if (bianxing3 == 1) {
+                  a[ia1 + 1][ib1 + 1] = n;
+                  a[ia1 + 2][ib1 + 1] = n;
+                  a[ia1 + 3][ib1 + 1] = n;
+                  a[ia1][ib1] = 0;
+                  a[ia1][ib1 + 3] = 0;
+                  a[ia1][ib1 + 2] = 0;
+                  ib1 = 14;
+                  ia1 = 16;
+                  bianxing3 = 0;
+                }
+              }
+            }
+          }
+        }
+      }
+      // 左右移动判定
+      for (ia = HANG; ia >= 0; ia--) {
+        for (ib = LIE; ib >= 0; ib--) {
+          // printf("cn=%d",cn);
+          if (a[ia][ib] == n /* &&cn==4 */ ) {
+            if (ib > youy) {
+              youy = ib;
+              youy1 = ia;
+            }
+            if (ib < zuoy) {
+              zuoy = ib;
+              zuoy1 = ia;
+            }
+          }
+        }
+      }
+      if ((youy + 1) <= 13 && a[youy1][youy + 1] == 0) {
+        openy = 1;
+      }
+      if ((zuoy - 1) >= 0 && a[zuoy1][zuoy - 1] == 0) {
+        openz = 1;
+      }
+      youy = 0;
+      zuoy = 13;
+      // 右移
+      for (ia = HANG; ia >= 0; ia--) {
+        for (ib = LIE; ib >= 0; ib--) {
+          // printf("cn=%d",cn);
+          if (a[ia][ib] == n && openy >= 1) {
+            if (aaa == 54 && (ib + 1) <= LIE) {
+              a[ia][ib + 1] = n;
+              a[ia][ib] = 0;
+            }
+          }
+        }
+      }
+      // 左移
+      for (ia = 0; ia <= HANG; ia++) {
+        for (ib = 0; ib <= LIE; ib++) {
+          // printf("cn=%d",cn);
+          if (a[ia][ib] == n && openz >= 1) {
+            if (aaa == 52) {
+              a[ia][ib - 1] = n;
+              a[ia][ib] = 0;
+            }
+          }
+        }
+      }
+
+      openy = 0;
+      openz = 0;
+      for (ia = HANG; ia >= 0; ia--) {
+        for (ib = LIE; ib >= 0; ib--) {
+          if (a[ia][ib] == n && ia != HANG) {
+            if (a[ia + 1][ib] == 0) {
+              cn++;
+            } else {
+              if (a[ia + 1][ib] == n) {
+                cn++;
+              }
+            }
+          }
+        }
+      }
+      if (pingyi >= 2 && (aaa == 54 || aaa == 52))
+        // 平移后下降
+      {
+        pingyi--;
+      }
+      // 上下移动图形
+      for (ia = HANG; ia >= 0; ia--) {
+        for (ib = LIE; ib >= 0; ib--) {
+          // printf("cn=%d",cn);
+          if (a[ia][ib] == n && cn == 4 && pingyi >= 2) {
+            if (ia + 1 <= HANG) {
+              a[ia + 1][ib] = n;
+              a[ia][ib] = 0;
+            } else {
+              // n++;
+              z = (HANG + 1);
+            }
+          }
+        }
+      }
+
+      // 色彩转换
+      for (ia = HANG; ia >= 0; ia--) {
+        for (ib = LIE; ib >= 0; ib--) {
+          if (a[ia][ib] == n) {
+            b[ia][ib] = se;
+          }
+        }
+      }
+      // 打印
+      for (i = 0; i <= HANG; i++) {
+        printf("\033[44;45m \033[m");
+        for (ii = 0; ii <= LIE; ii++) {
+          if (a[i][ii] > 0) {
+            if (b[i][ii] == 1) {
+              printf("\033[;42m囗\033[m");
+            }
+            if (b[i][ii] == 2) {
+              printf("\033[;41m囗\033[m");
+            }
+            if (b[i][ii] == 3) {
+              printf("\033[;43m囗\033[m");
+            }
+          } else {
+            if (a[i][ii] == 0) {
+              printf("%s", "  ");
+            }
+          }
+        }
+        printf("\033[44;45m \033[m");
+        if (i == 1)
+          printf("得分:%d", defen);
+        if (i == 4) {
+          printf("计数:%d", jishu);
+        }
+        if (i == 6 && aaa == 50) {
+          printf("%s", "暂停中!");
+        }
+        printf("\n");
+      }
+
+      // 延时
+      if (aaa != 56 && yanshi == 0) {
+        yanshia(TIME);
+        // 自定义延时函数
+      }
+      if (aaa == 56) {
+        yanshi = 5;             // 快速下移距离
+      }
+      if (yanshi > 0) {
+        yanshi--;
+      }
+      // 暂停
+      if (aaa == 50) {
+        getch();
+      }
+      clrscr();
+      if (cn < 4) {
+        break;
+      }
+      cn = 0;
+      aaa = 0;
+    }
+    // 结果判定
+    for (ia = HANG; ia >= 0; ia--) {
+      for (ib = LIE; ib >= 0; ib--) {
+        if (a[ia][ib] > 0) {
+          hang++;
+        }
+      }
+      if (hang == (LIE + 1)) {
+        defen += 100;
+        for (ib = 13; ib >= 0; ib--) {
+          a[ia][ib] = 0;
+          b[ia][ib] = 0;
+        }
+        hang = 0;
+
+      } else {
+        if (hang < (LIE + 1)) {
+          hang = 0;
+        }
+      }
+    }
+    // 整体下移
+    for (i = 0; i < 4; i++)     // 最多下移4次
+    {
+      for (ia = HANG; ia >= 2; ia--) {
+        for (ib = LIE; ib >= 0; ib--) {
+          if ((a[ia][ib]) == 0) {
+            // printf("a[ia][ib]=%d\n",a[ia][ib]);
+            hang1++;
+          }
+        }
+        if (hang1 == (LIE + 1)) {
+          for (ib = LIE; ib >= 0; ib--) {
+            a[ia][ib] = a[ia - 1][ib];
+            a[ia - 1][ib] = 0;
+            b[ia][ib] = b[ia - 1][ib];
+            b[ia - 1][ib] = 0;
+          }
+          hang1 = 0;
+
+        } else {
+          if (hang1 < (LIE + 1)) {
+            hang1 = 0;
+          }
+        }
+      }
+    }
+    z = 0;
+    ic++;
+    if (ic == 5)
+      ic = 0;
+    se++;
+    if (se == 4)
+      se = 1;
+    bianxing = 0;
+    bianxing1 = 0;
+    bianxing2 = 0;
+    bianxing3 = 0;
+    for (ia = 0; ia <= HANG; ia++) {
+      for (ib = 0; ib <= LIE; ib++) {
+        if (a[ia][ib] > 0) {
+          if ((ia - 4) < 0) {
+            printf("\n%s", "     ");
+            printf("GAME OVER !\n按数字1键重新开始！");
+            while (aaa != 49) {
+              aaa = getch();
+            }
+            if (aaa == 49) {
+              for (i = 0; i <= HANG; i++) {
+                for (ii = 0; ii <= LIE; ii++) {
+                  a[i][ii] = 0; // 初始化数组
+                  b[i][ii] = 0; // 初始化数组
+                }
+              }
+              defen = 0;
+              jishu = 0;
+            }
+          }
+        }
+      }
+    }
+  } while (1);
+  getch();
+}
+// 自定义延时函数
+int yanshia(int i) {
+  int l, j, k;
+  for (l = 0; l < i; l++) {
+    for (j = 600; j >= 0; j--) {
+      for (k = 0; k < 1000; k++) {
+      }
+    }
+  }
+}

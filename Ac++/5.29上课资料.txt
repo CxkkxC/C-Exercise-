@@ -1,0 +1,87 @@
+#include<iostream>
+using namespace std;
+class A
+{
+private:
+	int x;
+protected:
+	int y;
+public:
+	int z;
+	A(int X,int Y,int Z)
+	{
+		x = X;
+		y = Y;
+		z = Z;	
+	}
+	int getx();//类内声明函数
+	int gety();
+	int getz();
+	friend int sum1();//友元函数
+	friend int sum2(A &m);
+	friend class Text;
+};
+int A :: getx()//类外函数实现
+{
+	return x;
+}
+int A :: gety()
+{
+	return y;
+}
+int A :: getz()
+{
+	return z;
+}
+int sum1()
+{
+	A a2(4,5,6);
+	return a2.x;
+}
+int sum2(A &m)
+{
+	return m.x;
+}
+class Text
+{
+public:
+	int sum1()
+	{
+		A a2(4,5,6);
+		return a2.x;
+	}
+	int sum2(A &m)//引用类
+	{
+		return m.x;
+	}
+};
+class B : public A//公有继承A
+{
+private:
+int L,W;
+public:
+	B(int a,int b,int c,int d,int e):A(a,b,c)//B的构造函数调用A类构造函数
+	{
+	L = d;
+	W = e;
+	}
+void display()
+{
+cout<<L<<"，"<<W<<endl;
+cout<<getx()<<"，"<<y<<"，"<<z<<endl;
+}
+};
+int main()
+{
+A a1(1,2,3);
+cout<<a1.getx()<<endl;//1
+cout<<a1.gety()<<endl;//2
+cout<<a1.getz()<<endl;//3
+cout<<sum1()<<endl;//4
+cout<<sum2(a1)<<endl;//1
+Text t1;
+cout<<t1.sum1()<<endl;//4
+B b1(7,8,9,10,11);
+b1.display();
+return 0;
+}

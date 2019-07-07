@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int n,k,i,sum;
+	int arr[10050];				//数组要稍微定大一些，因为下面的sum会大于10000，不然会运行超时。 
+	scanf("%d",&n);
+	memset(arr,0,sizeof(arr));
+	for(i=1;i<=n;i++)
+	{
+		k=i;
+		sum=k;
+		while(k)
+		{
+			sum+=k%10;
+			k/=10;
+		}
+		arr[sum]=1;
+	}
+	for(i=1;i<=n;i++)
+	{
+		if(arr[i]==0)
+			printf("%d\n",i);
+	}
+	return 0;
+}

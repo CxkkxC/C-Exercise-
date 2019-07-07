@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int a[1000000];
+	int n;
+	cin>>n;
+	for(int i=1;i<=n;i++)
+	{
+		if(i<=2)
+		a[i]=1;
+		else
+		{
+			a[i]=(a[i-1]+a[i-2])%10007;
+			}
+		}
+cout<<a[n]<<endl;
+	}

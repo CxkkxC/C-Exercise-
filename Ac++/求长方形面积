@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+
+double area(double length,double width)
+{
+		return (length*width);
+	}
+int main()
+{
+	double (*p)(double ,double);
+	p=area;
+	double length,width;
+	cin>>length>>width;
+		cout<<p(length,width);
+	
+	return 0;
+	
+	
+	}

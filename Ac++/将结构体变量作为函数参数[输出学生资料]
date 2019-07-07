@@ -1,0 +1,57 @@
+#include<string>
+#include<iostream>
+using namespace std;
+struct Student
+{
+	long long int idNumber;
+	char name[15];
+	int age;
+	char department[20];
+	float gpa;
+	};
+//	void display(student arg);
+int main()
+{
+Student s1[3]={	{511721010639,"陈旋凯",21,"ComputerScience",84.5},{511721010640,"张贤建",20,"ComputerScience",86},{511721010641,"陈奕豪",21,"ComputerScience",88}},*p;
+		for(int i=0;i<3;i++)
+	{
+	cout
+	<<"学号："
+	<<s1[i].idNumber
+	<<" 姓名："
+	<<s1[i].name		                 
+	 <<" 年龄："
+	<<s1[i].age<<'\n'
+	<<" 院系："
+	<<s1[i].department
+	<<" 成绩："
+	<<s1[i].gpa<<endl;
+		}
+		cout<<endl;
+		p=s1;
+		for (int i=0;i<3;i++)
+		{
+			cout<<(*(p+i)).idNumber<<(p+i)->name<<s1[i].age<<endl;//三种表示方法
+			}
+		return 0;
+		}/*
+	display(s[3]);
+	}
+		void display(student arg)
+	{		
+	for(int i=0;i<3;i++)
+	{
+	cout
+	<<"学号："
+	<<s1[i].arg.idNumber
+	<<" 姓名："
+	<<s1[i].arg.name		                 
+	 <<" 年龄："
+	<<s1[i].arg.age<<'\n'
+	<<" 院系："
+	<<s1[i].arg.department
+	<<" 成绩："
+	<<s1[i].arg.gpa<<endl;
+		}
+		cout<<endl;
+		}*/

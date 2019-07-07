@@ -1,0 +1,71 @@
+
+#ifndef TRANS_H_INCLUDED
+#define TRANS_H_INCLUDED
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include<iostream>
+using namespace std;
+
+void creat(string txt[])
+{
+   for(int i=0;i<strlen(txt);i++)
+   {
+   txt[i]+=1;
+   }
+   printf("生成的加密文字为:%s\n",txt);
+}
+void trans(string txt)
+{
+   for(int i=0;i<strlen(txt);i++)
+   {
+       txt[i]-=1;
+   }
+   printf("解密后文字为:%s\n",txt);
+}
+
+#endif // TRANS_H_INCLUDED
+
+int main()
+{
+  string txt;
+   int choice;
+
+   printf("---------------欢迎使用译码机!---------------\n");
+   printf("****************************************************\n");
+   printf("生成加密文字请输入1      翻译加密文字泣请输入2\n");
+   printf("退出程序请输入0\n");
+
+   while(1)
+   {
+       printf("****************************************************\n");
+       printf("请输入您的选择:");
+       scanf("%d",&choice);
+     //  fflush(stdin);
+       switch(choice)
+       {
+       case 1:
+           printf("请输入文字:");
+             for(int i=0;i<strlen(txt);i++)
+   {
+   cin>>txt[i];
+   }
+           creat(txt);
+           break;
+       case 2:
+           printf("请输入加密文字:");
+             for(int i=0;i<strlen(txt);i++)
+   {
+   cin>>txt[i];
+   }
+           trans(txt);
+           break;
+       case 0:
+           printf("退出成功!\n");
+           exit(0);
+       default:
+           printf("您的输入有误,请重新输入!\n");
+       }
+   }
+}

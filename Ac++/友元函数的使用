@@ -1,0 +1,31 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class Internet
+{
+	public:
+	Internet(char *name,char *adress)
+	{
+		strcpy(Internet::name,name);
+		//字符串数组拷贝
+		strcpy(Internet::adress,adress);
+		}
+		friend void ShowN(Internet &obj);
+		//友元函数的声明
+	protected:
+	char name[20];
+	char adress[20];
+	};
+	void ShowN(Internet &obj)
+	//函数定义，不能写成，void Internet::ShowN(Internet &obj)
+	{	cout<<obj.name<<'\n'<<obj.adress<<endl;
+		}
+		int main()
+		{
+			Internet a("新浪","www.sina.com");
+		ShowN(a);
+		cin.get();
+			
+			return 0;
+			
+			}

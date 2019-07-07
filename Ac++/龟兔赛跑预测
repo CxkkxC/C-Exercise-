@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+int main() {
+  int v1, v2, t, s, l;          // 兔子发现自己领先t米或以上，它们就会停下来休息s秒,v1兔子，v2乌龟，l是赛道长度
+  cin >> v1 >> v2 >> t >> s >> l;
+  int sum1 = 0, sum2 = 0, t1 = 0, t2 = 0;
+  t1 += 1;
+  t2 += 1;
+  sum1 += v1;
+  sum2 += v2;
+  while (sum1 < l && sum2 < l) {
+    if (sum1 - sum2 >= t) {
+      t1 += s;
+      for (int i = 1; i <= s; i++) {
+        t2 += 1;
+        sum2 += v2;
+        if (sum2 == l)
+          break;
+      }
+    } else {
+      t1 += 1;
+      t2 += 1;
+      sum1 += v1;
+      sum2 += v2;
+    }
+  }
+  if (sum1 == sum2) {
+    cout << "D" << endl;
+    cout << t2;
+  } else if (sum1 > sum2) {
+    cout << "R" << endl;
+    cout << t1;
+  } else {
+    cout << "T" << endl;
+    cout << t2;
+  }
+  return 0;
+}

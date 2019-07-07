@@ -1,0 +1,52 @@
+#include<iostream>
+using namespace std;
+class Student
+{
+private:
+	int num;
+	int achievement;
+public:
+	Student(int n,int ch)
+	{
+		num = n;
+		achievement = ch;
+		cout<<"构造函数。"<<endl;
+	}
+	void show()
+	{
+		cout<<"学号:"<<num<<"\n"<<"成绩:"<<achievement<<endl;
+	}
+	~Student()
+	{cout<<"析构函数。"<<endl;
+	}
+};
+int main()
+{
+	int N[5],Ch[5],i;
+	int *P1,*P2;
+	cout<<"请依次输入学号和成绩。\n";
+	for(i = 0;i<5;i++)
+	{
+		cout<<"学号:";
+		cin>>N[i];
+		cout<<"成绩:";
+		cin>>Ch[i];
+	}
+	P1 = N;
+	P2 = Ch;
+	/*for(i = 0;i<5;i++)
+	{
+	cout<<*(P1+i)<<"\n"<<*(P2+i)<<endl;
+}*/
+	Student s[5] = {Student(*(P1),*(P2)),Student(*(P1+1),*(P2+1)),Student(*(P1+2),*(P2+2)),Student(*(P1+3),*(P2+3)),Student(*(P1+4),*(P2+4))};
+	Student *p = s;
+	p->show();
+	(p+2)->show();	
+	(p+4)->show();
+	cout<<".................Cxk...................\n";
+	for (i = 0;i<5;i++)
+	{
+		(p+i)->show();
+	}
+	return 0;
+}

@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+
+double CircleAreal(double r)
+{
+	double area;
+	area=3.14*r*r;
+	return area;
+	
+	}
+
+
+int main()
+{
+	double r;
+	cin>>r;
+	cout<<area<<endl;
+	return 0;
+	
+	
+	
+	
+	}

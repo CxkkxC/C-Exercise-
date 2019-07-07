@@ -1,0 +1,22 @@
+#include<stdlib.h>
+#include<malloc.h>
+#include<iostream>
+using namespace std;
+typedef int ElemType;
+typedef struct node {
+	char name[10];
+  int score;
+  struct node *next;
+} StudList;
+void CreateStudent(StudList *&sl)
+//采用交互方式创建学生单链表
+{}
+void DestroyList(StudList *&L)
+//销毁学生单链表
+{}
+void DispList(StudList *L)
+//输出学生单链表
+{}
+void SortList(StudList *&L)
+//将学生单链表按成绩递减排序
+{}

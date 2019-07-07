@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<conio.h>
+#include<iostream>
+using namespace std;
+#define H  12
+#define L   13
+int main() {
+   int Sr;
+   int map[H+1][L+1],Fk[H+1][L+1];
+   for (int i = 0;i <= H;i++)
+   for(int j = 0;j <= L;j++)
+   {
+   	Fk[i][j]=0;
+   	map[i][j]=0;
+   	}
+ 
+   	
+  while (1) {
+    if (kbhit()) {
+      Sr = getch();
+      if (Sr == 53)
+        cout << ";";
+    }
+  }
+  return 0;
+}

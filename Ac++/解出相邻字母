@@ -1,0 +1,51 @@
+#include<iostream>
+using namespace std;
+ int main()		 
+ {
+ 	while (1)
+ 	{
+    char ch,ch1,ch2;//定义字符串
+	 cin>>ch;
+	 //下面一连串是判断azAZ等特殊情况的
+	 if (ch == 'A' || ch=='a')
+{
+	if(ch=='A')
+	{
+ch1 = 'Z';
+ch2 = 'B';
+}
+else
+{
+	ch1='z';
+	ch2='b';
+	}
+cout<<ch1<<ch<<ch2;
+}
+else if (ch == 'Z' || ch =='z')
+{
+	if(ch=='Z')
+	{
+ch1 = 'Y';
+ch2 = 'A';
+}
+else
+{
+	ch1='y';
+	ch2='a';
+	}
+cout<<ch1<<ch<<ch2;
+}
+else
+{
+	 	--ch;
+	 for(int n=1;n<=3;n++)
+	 //依次递增字符[字母]ascll码
+		 { 
+			 cout<<ch;
+			 ch++;	
+		 }
+		 }
+	 cout<<'\n';
+	 }
+ return 0;
+	  }

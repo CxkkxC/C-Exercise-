@@ -1,0 +1,32 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main() {
+  string n[21] =
+    { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
+    "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+    "sixteen",
+    "seventeen", "eighteen", "nineteen", "twenty"
+  };
+  string a[6] = { " ", " ", "twenty", "thirty", "forty", "fifty" };
+  int h, m;
+  cin >> h >> m;
+  if (m == 0) {
+    if (h <= 20)
+      cout << n[h] << " o'clock";
+    else
+      cout << a[h / 10] << " " << n[h % 10] << " o'clock";
+  } else {
+    if (h <= 20) {
+      if (m <= 20)
+        cout << n[h] << " " << n[m];
+      else
+        cout << n[h] << " " << a[m / 10]<<" "<<n[m%10];
+    } else {
+      if (m <= 20)
+        cout << a[h / 10]<<" "<<n[h%10]<<" "<<n[m];
+      else
+        cout << a[h / 10] << " " << n[h%10]<<" "<<a[m / 10]<<" "<<n[m%10];
+    }
+  }
+}

@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+bool symm(long m)
+{
+long temp = m,n=0;
+while (temp)
+{
+n = n*10+temp%10;
+temp = temp/10;
+}
+return (m == n);
+}
+int main()
+{
+long m;
+cout<<"请输入一个整数：";
+cin>>m;
+cout<<"输入了"<<symm(m)<<"个回文数！";
+return 0;
+}

@@ -1,0 +1,32 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+long fun(string s) ;
+int main(){
+string hex;
+cin>>hex;
+int sum=0;
+sum=fun(hex);
+cout<<sum;
+/*for(int i = 1;i<hex.length();i++){
+cout<<i<<" ";
+	sum=sum+hex[i]*pow(16,i);
+	cout<<sum;
+	}
+}*/
+}
+long fun(string s) 
+ {  
+  int i,t;  
+  long sum=0; 
+  for(i=0;i<s.length();i++)  
+  {   
+   if(s[i]<='9')
+    t=s[i]-'0';  
+   else 
+   t=s[i]-'a'+10;
+   sum=sum*16+t;  
+  } 
+  return sum;
+ }
+ //  a  65

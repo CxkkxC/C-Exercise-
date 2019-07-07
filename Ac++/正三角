@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+int main() {
+  int i, j,k,n;
+  cin >>i>>j>>k;
+  if(i>j)
+  {
+  	n=i;
+  	i=j;
+  	j=n;
+  	}
+  	if(i>k)
+  	{
+  		n=i;
+  	i=k;
+  	k=n;
+  		}
+  		if()
+  return 0;
+}

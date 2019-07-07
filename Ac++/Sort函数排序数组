@@ -1,0 +1,22 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+// 自定义布尔类型的排序函数
+bool Xdd(int a, int b) {
+  return a > b;                 // 实现降序(a<b实现升序)
+}
+int main() {
+  int a[20] = { 2, 5, 7, 1, 4, 3, 2, 5, 1, 8, 4, 9, 2, 7, 0, 11, 2, 15 };
+  for (int i = 0; i < 20; i++)
+    cout << a[i] << " ";
+  cout << endl<<endl;;
+ /*Sort(start,end,排序方法)*/
+  sort(a, a + 20);
+  for (int i = 0; i < 20; i++)
+    cout << a[i] << " ";
+  cout << endl;
+   sort(a, a + 20, Xdd);
+  for (int j = 0; j < 20; j++)
+    cout << a[j] << " ";
+  return 0;
+}

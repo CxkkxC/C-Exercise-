@@ -1,0 +1,28 @@
+#include <iostream>
+#include <iomanip>
+#include<cmath>
+using namespace std;
+void Set(float a, float b, float c) // Solve equations
+{
+  float d;
+  float x1, x2, e;              // 求解方程 ax^2+bx+c
+  d = b * b - 4 * a * c;
+  e = sqrt(d);
+  x1 = (-b + sqrt(d)) / (2 * a); // 解出x1
+  x2 = (-b - sqrt(d)) / (2 * a); // 解出x2 
+  if (d < 0)                    // 如果判别式小于0显示无解
+    cout << "Error" << endl;
+    else if(d==0)
+     cout << "x1 = " <<fixed<<setprecision(6)<< x1 << endl;
+  else                          // 如果判别式大于0就显示出解
+  {
+    cout << "x1 = " <<fixed<<setprecision(6)<<  x1 << endl;
+    cout << "x2 = " <<fixed<<setprecision(6)<<  x2 << endl;
+  }
+}
+int main() {
+  float a, b, c;
+  cin >> a >> b >> c;
+  Set(a, b, c);
+  return 0;
+}

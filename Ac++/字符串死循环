@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+char a[10];
+cout<<"请输入你的姓名:";
+cin>>a;
+//while(true)
+{
+cout<<a<<"是傻逼!";
+}
+return 0;
+}

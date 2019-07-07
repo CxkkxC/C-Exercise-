@@ -1,0 +1,17 @@
+#include<iostream>
+#include<fstream>
+
+using namespace std;
+int main()
+{
+	ofstream fout;
+	int num;
+	char a[] = "John Doe";
+	fout.open("output.txt");
+	num = 20;
+	fout<<"here is a number:"<<num<<"\n";
+	fout<<"Now here...";
+	fout<<flush;
+	fout.close();
+	return 0;
+	}

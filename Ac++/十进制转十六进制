@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	long long n;
+	cin >> n;
+	char hex[10] = { '0' };
+	int i, j = 0;
+	if (n == 0)
+	{
+		cout << hex[0];
+	}
+	else
+	{
+		for (i = 0; n; i++)
+		{
+			j = n % 16;
+			if (j <= 9)
+				hex[i] = j + '0';
+			else
+				hex[i] = j - 10 + 'A';
+			n = n / 16;
+		}
+		for (j = i - 1; j >= 0; j--)
+			cout << hex[j];
+	}
+}
+

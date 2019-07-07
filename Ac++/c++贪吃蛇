@@ -1,0 +1,233 @@
+#include<conio.h>				// 屏幕操作
+#include<stdlib.h>				// 系统相关
+#include<iostream>
+using namespace std;
+void move();
+void start();
+void draw();
+void getturn();
+void turn(char direction);
+void judge();
+void getfood();
+#define H 19 /*地图的高*/ 
+#define W 50/*地图的宽*/ 
+ int a, b, x, y, l = 0, n, i, j,Yes,N,J = 0;
+int x1, y1;//食物坐标
+char *head  , *tail  ,*tt , map[H][W];
+char *belly[H * W]  , *food /* 食物 */ ;
+char L, R, F, B;
+	/* 各个方向 */
+ int main()
+{
+int difficult;	cout<<"请直接输入数字＂1.简单＂，＂2.中等＂，＂3.困难＂选择难度系数"<<endl;
+cin>>difficult;
+if (difficult==1)
+N = 20;
+else if (difficult==2)
+N = 32;
+else
+N =40;	
+	start();					/* 初始化游戏的数据 */
+	turn(F);				/* 转向函数 */
+	getfood();					/* 产生食物 */
+	draw();						/* 画图 */
+	while (1)
+	{
+		usleep(4000000 / N);		/*休眠函数，不然蛇跑的太快，N是我们定义的难度系数 */
+		getturn();			
+			/* 得到我们输入的转向 */
+		move();				
+			/* 接着蛇就移动 */
+		judge();				/*移动完成后判断一下，是撞墙了，还是吃到食物了 */
+		clrscr();	
+		draw();				
+			/*不断清屏然后画地图 */
+	}
+	return 0;
+}					
+void start()
+{
+	for (i = 0; i != H; i++)
+		for (j = 0; j != W; j++)
+		{
+			if ((j == 0))
+				map[i][j] = '9';//左边高墙
+				else if((j==W-1))
+				map[i][j] = '9';//右边高墙
+				else if((i==0))
+				map[i][j]='5';//上地面
+				else if((i==H-1))//下地面
+				map[i][j]='5';
+			else
+				map[i][j] = '0';
+		}						/*以上是初始化地图,地图数组的四周被赋予'9'和'5',其它的赋予'0' */
+	x = W/2, y = H/2;		/*x,y是蛇的坐标，这里赋值使其在地图的中心 */
+	head = &map[y][x + 1];	
+		/* 给蛇头一个坐标指针 */
+	belly[l] = &map[y][x];		/* 蛇身 */
+	tail = &map[y][x - 1];		/* 蛇尾 */
+	*head = '1';			
+		/* 蛇头指向的坐标赋予1 */
+	*belly[0] = '2';			/* 蛇身赋予2 */
+	*tail = '3';				/* 蛇尾赋予3 */
+	L = '2', R = '8';
+F = '6', B = '4';
+}
+
+void turn(char direction)
+{
+	switch (direction)
+	{
+	case '2':
+		--y;		
+		break;
+	case '8':
+		++y;
+		break;
+	case '4':
+		--x;
+		break;
+	case '6':
+		++x;
+		break;
+	}
+}
+void getfood()
+{
+	do
+	{
+		x1 = rand() % (W - 2) + 1;
+		y1 = rand() % (H - 2) + 1;
+			/* 产生随机的食物坐标 */
+	}
+	while (map[y1][x1] != '0');	/*当食物的坐标代表的地图那里不是空白，继续执行上面的循环 */
+	food = &map[y1][x1];	
+		/* 将食物指针指向得到的坐标 */
+	*food = '4';			
+		/* 将坐标处的值替换成4 */
+}
+void draw()
+{
+	for (i = 0; i != H; i++)
+	{
+		for (j = 0; j != W; j++)	/* 我们用两个循环来查看整个地图 */
+			switch (map[i][j])	/* 对地图坐标代表的值进行判断 */
+			{
+			case '0':			/* 当遇到空白时，我们打印空格 */
+				cout<<" ";
+				break;
+			case '9':			/* 当遇到墙时，我们打印#号 */
+				cout<<"‖";
+				break;
+				case '5':
+				cout<<"=";
+				break;
+			case '1':			/* 遇到蛇头时 */
+				cout<<"●";
+				break;
+			case '2':			/* 遇到蛇身时 */
+				cout<<"▪";
+				break;
+			case '3':			/* 遇到蛇尾 */
+				cout<<"▪";
+				break;
+			case '4':			/* 遇到食物 */
+				cout<<"▪";
+				break;
+			}
+	cout<<endl;		
+	}
+}
+
+ void getturn()
+{
+	char t;					
+	while (kbhit())				/* 这里比较难理解,kbhit()函数是：当我们有输入时，值为true,没有输入时，值为false,当我们有输入时，执行循环（得到我们的输入），没有输入时，就跳过while循环，让蛇继续原方向走 */
+	{
+		t = getch();		
+			/* 这个函数是得到一个输入 */
+		if (t == L)			/*判断输入的是不是left,left我们定义的是2 */
+		{
+			turn(L);
+			L = B;		/* 方向一变，那么原本定义的上下左右值就全变了，所以来个转换 */
+			B = R;
+			R = F;
+			F = t;
+			goto gett;			/* 跳到gett标志处 */
+		}
+		else if (t == R)	/* 同上 */
+		{
+			turn(R);
+			R = B;
+			B = L;
+			L = F;
+			F = t;
+			goto gett;
+		}
+	}
+	turn(F);			
+		/* 如果没有输入，我们默认是像前进 */
+  gett:;
+	while (kbhit())
+		t = getch();
+}
+void move()
+{
+	tt = belly[l];				/* 零时的尾巴 */
+	for (i = l; i != 0; --i)	
+	/* 蛇身如果有多节，那么就伸长 */
+		belly[i] = belly[i - 1];
+	belly[0] = head;			/*因为蛇在前进，所以蛇身的第一节伸到原来的头部 */
+	*belly[0] = '2';			
+	/* 将值替换成蛇身的值 */
+	head = &map[y][x];		
+		/* 头部赋予新的坐标 */
+}
+void judge()
+{
+	switch (*head)			
+		/* 判断头部的值是什么 */
+	{
+	case '2':
+	case '9':
+		cout<<"你的积分为:"<<J<<endl;	cout<<"游戏结束，如需继续请输入数字 1 。\n";
+		cin>>Yes;
+		if(Yes==1)
+		{
+			clrscr();
+			l=0,J=0;
+			main();
+			}	
+			else
+			break;
+			/* 如果是蛇身或墙，直接游戏结束*/
+	case '5':
+		cout<<"你的积分为:"<<J<<endl;
+	cout<<"游戏结束，如需继续请输入数字 1 。\n";
+		cin>>Yes;
+		if(Yes==1)
+		{
+			clrscr();
+			l=0,J=0;
+			main();
+			}	
+			else
+			break;
+		/*如果是蛇身或墙，直接游戏结束*/
+	case '4':			
+			/* 如果是食物，那么我们吃掉它 */
+		getfood();
+		l++;
+		J++;		
+			/* 吃完之后蛇要伸长 ，积分增加*/
+		belly[l] = tt;
+		break;
+	case '0':					
+		*tail = '0';			/*把尾巴的值变成空白，因为我们移走了 */
+	case '3':
+		*head = '1';			/*如果是蛇尾，我们继续前进，不管 */
+		tail = tt;
+		*tail = '3';
+		break;
+	}
+}

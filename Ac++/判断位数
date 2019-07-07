@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int a,b,c,d;
+	while(true)
+	{
+		cout<<"请输入一个不大于三位数的数字。"<<endl;
+	cin>>a;
+			if(a>=1000)  
+	{		cout<<"对不起,你已输入错误,再见。";
+	break;
+	}
+	 if(a>=100)
+	{	cout<<"这是一个三位数,这个三位数为:"<<a<<endl;
+		b=a/100;
+		c=a%100/10;
+		d=a%100%10;
+		cout<<"百分位为:"<<b<<";"<<"十分位为:"<<c<<";"<<"个位为:"<<d;
+		cout<<endl;
+		}
+		else if(a>=10)
+		{	cout<<"这是一个两位数,这个两位数为:"<<a<<endl;
+			b=a/10;
+			c=a%10;
+			cout<<"十分位为:"<<b<<";"<<"个位为:"<<c<<endl;
+			cout<<endl;
+			}
+			else
+			cout<<"这是一个个位数,这个个位数为:"<<a<<endl<<"个位为:"<<a<<endl;
+			cout<<endl;
+	}
+	return 0;
+
+}

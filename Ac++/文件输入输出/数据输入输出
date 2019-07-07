@@ -1,0 +1,69 @@
+#include <fstream>
+#include <iostream>
+#include<string.h>
+using namespace std;
+	string name;
+	string Name;
+void Storage() {
+  char data[100];
+// 以写模式打开文件
+  ofstream outfile;
+  outfile.open("afile.txt", ios::out | ios::app);
+  cout<<"请输入应用名称:";
+  cin>>name;
+  outfile<<name<<endl;
+  cout << "请输入应用帐号: ";
+  cin>>data;
+  // 向文件写入用户输入的数据
+  outfile << data <<endl;
+  cout << "请输入应用密码: ";
+  cin >> data;
+  // 再次向文件写入用户输入的数据
+  outfile << data << endl;
+
+  // 关闭打开的文件
+  outfile.close();
+}
+void Output() {
+  char data[100];
+  // 以读模式打开文件
+  ifstream infile;
+  infile.open("afile.txt");
+  cin>>Name; 
+  infile >> name;
+  string::size_type idx =name.find( Name );
+     // idx=name.find(Name);//在a中查找b.
+    if(idx == string::npos )//不存在。
+        cout << "not found\n";
+    else//存在。
+    {
+  cout << "这个应用帐号为:" << endl;
+  infile >> data;
+  cout<< data << endl;
+  cout << "这个应用密码为:" << endl;
+  infile >> data;
+  cout << data << endl;
+  infile.close();
+}
+};
+int main() {
+  cout << "此软件可以保存软件账号和密码。" << endl;
+  int choice;
+  cout << "请输入你需要选择的功能:" << endl;
+  cout << "1.储存数据             2.搜索并输出数据" << endl;
+while(cin >> choice)
+{
+  switch (choice)
+   {
+  case 1:
+    Storage();   cout<<"\n保存完毕，请输入0退出程序，或者输入其他数字选择功能。"<<endl;
+    break;
+  case 2:
+    Output(); cout<<"\n输出完毕，请输入0退出程序，或者输入其他数字选择功能。"<<endl;
+    break;
+    }
+    if(choice==0)
+    break;
+    }
+     return 0;
+  }

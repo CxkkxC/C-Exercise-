@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+class  Box
+{
+private:
+ int l;
+ int w;
+ int h;
+public:
+	void volume();
+	Box(int x,int y,int z)//构造函数
+	{
+		l = x;
+		w = y;
+		h =z;		
+		}
+	};
+	void Box :: volume()
+	{
+		int Barea;
+		Barea = l*w*h;	cout<<"这个长方体的体积:"<<Barea<<endl;
+		}
+int main()
+{
+	Box B1(12,20,25),B2(10,14,20);
+	B1.volume();
+	B2.volume();
+	return 0;
+	}
